@@ -1,0 +1,102 @@
+body {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+
+    margin: 0;
+
+    align-items: center;
+    justify-content: center;
+
+    background-color: #689be7;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    border-radius: 0.25rem;
+
+    padding: 1rem;
+}
+
+#adicionar {
+    display: flex;
+}
+
+#atualizar {
+    display: flex;
+}
+
+.title {
+    text-align: center;
+    font-size: large;
+}
+
+.input {
+    flex: 23;
+
+    border: 1px solid #689be7;
+    border-radius: 0.125rem;
+}
+
+.addButton {
+    flex: 1;
+
+    margin-left: 0.25rem;
+    height: 100%;
+    
+    border: 1px solid #689be7;
+    border-radius: 0.125rem;
+
+    background-color: aliceblue;
+    color: #689be7;
+}
+
+#lista {
+    list-style: none;
+    padding: 0;
+}
+
+#lista > li {
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+    text-wrap: wrap;
+}
+
+#lista > li > div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.listButton {
+    margin-left: 0.25rem;
+
+    border: none;
+
+    background-color: aliceblue;
+    color: #689be7;
+
+    width: 1rem;
+    height: 1rem;
+
+    padding: 0.25rem;
+}
+
+.Button__Edit {
+    background: center / contain no-repeat url('./assets/pencil.png');
+}
+
+.Button__Delete {
+    background: center / contain no-repeat url('./assets/trash.png');
+}
+
+.Button__Update {
+    background: center / contain no-repeat url('./assets/check.png');
+}
