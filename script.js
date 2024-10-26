@@ -33,7 +33,11 @@ function adicionarForm() {
 	/* CUSTOMIZANDO ELEMENTOS */
     formJS.id = "adicionar"
 	inputJS.placeholder = "Lavar roupa";
-	buttonJS.innerText = "Adicionar ToDo";
+	buttonJS.innerText = "+";
+
+
+    buttonJS.className = "addButton";
+    inputJS.className = "input";
 
     /* ADICIONANDO EVENTOS AO FORM */
     formJS.addEventListener("submit", function (e) {
@@ -68,11 +72,13 @@ function adicionarFormAtualizacao(todo) {
     const formAdicionar = document.getElementById("adicionar");
 
 	/* CUSTOMIZANDO ELEMENTOS */
-    formJS.id = 'atualizar'
+    formJS.id = "atualizar"
 	inputJS.placeholder = todo.text;
     inputJS.value = todo.text;
-	buttonJS.innerText = "Atualizar ToDo";
     buttonJS.id = todo.id
+
+    inputJS.className = "input"
+    buttonJS.classList.add("listButton", "Button__Update")
 
     /* ADICIONANDO EVENTOS AO FORM */
     formJS.addEventListener("submit", function (e) {
@@ -118,21 +124,23 @@ function criarTodo (todo) {
 function adicionarTodoNoUl (todo) {
     const ul = document.getElementById("lista");
     const li = document.createElement("li")
+    const div = document.createElement("div");
     const buttonEditar = criarBotaoEditar(todo);
     const buttonDeletar = criarBotaoDelete(todo);
 
     li.innerText = todo.text;
 
-    li.appendChild(buttonEditar)
-    li.appendChild(buttonDeletar)
+    div.appendChild(buttonEditar)
+    div.appendChild(buttonDeletar)
+    li.appendChild(div)
     ul.appendChild(li)
 }   
 
 function criarBotaoDelete (item) {
     const button = document.createElement('button');
     
-    button.innerText = "Deletar";
     button.id = item.id;
+    button.classList.add("listButton", "Button__Delete")
     button.addEventListener("click", function (e){    
         const newTodoList = todoList.filter((i) => i.id !== item.id)
 
@@ -147,8 +155,8 @@ function criarBotaoDelete (item) {
 function criarBotaoEditar (item) {
     const button = document.createElement('button'); 
 
-    button.innerText = "Editar";
     button.id = item.id;
+    button.classList.add("listButton", "Button__Edit")
     button.addEventListener("click", function (e) {
         let findTodo = todoList.find((i) => i.id === item.id);
         
@@ -165,12 +173,14 @@ function atualizarLista (todoList, type) {
   
     const newTodoListLi = todoList.map((item) => {
         const li = document.createElement("li");
+        const div = document.createElement("div")
         const buttonEditar = criarBotaoEditar(item);
         const buttonDeletar = criarBotaoDelete(item);      
 
         li.innerText = item.text;
-        li.appendChild(buttonEditar)
-        li.appendChild(buttonDeletar)
+        div.appendChild(buttonEditar)
+        div.appendChild(buttonDeletar)
+        li.appendChild(div)
 
         return li;
     })
